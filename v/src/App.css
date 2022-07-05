@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+	background-color: #444;
+	font-family: "Roboto", sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+.border {
+	border: 3px solid rgb(71, 71, 71);
+	width: -webkit-fill-available;
+	padding: 1%;
+}
+h2 {
+	font-size: 2vw;
+	border: 2px solid grey;
+	width: -webkit-fill-available;
+}
+.fsizeLow{
+    font-size: smaller;
+}
+.camera1down {
+	display: flex;
+	text-align: center;
+	justify-content: space-evenly;
+	animation-fill-mode: forwards;
+	flex-wrap: wrap;
+}
+.alcenter {
+	align-items: center;
+}
+h1 {
+	font-size: large;
+	color: rgb(186, 186, 186);
+}
+@media only screen and (max-width: 900px) {
+	.border {
+		border: 3px solid rgb(71, 71, 71);
+		width: 100%;
+		padding: 1%;
+	}
+	.heading1 {
+        display: none;
+	}
+}
+
+.camerup2 {
+	padding: 2%;
+	display: flex;
+	border: 2px solid;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	background-color: white;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.cameras {
+	margin: 27px 2%;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.text {
+	color: white !important;
+}
