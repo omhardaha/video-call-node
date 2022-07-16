@@ -11,11 +11,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "react-router-dom";
 // const socket = io.connect("http://localhost:5000");
 const socket = io.connect("https://nodejs-video-call-om.herokuapp.com/");
 function App() {
-    console.log("react Running");
+	console.log("react Running");
 	const [me, setMe] = useState("");
 	const [stream, setStream] = useState();
 	const [open, setOpen] = useState(false);
@@ -29,10 +30,6 @@ function App() {
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
-
-	useEffect(() => {
-		document.title = "Video Call";
-	});
 
 	useEffect(() => {
 		navigator.mediaDevices
@@ -74,7 +71,6 @@ function App() {
 			setCallAccepted(true);
 			peer.signal(signal);
 		});
-
 		connectionRef.current = peer;
 	};
 
@@ -96,9 +92,11 @@ function App() {
 		connectionRef.current = peer;
 	};
 
-	const leaveCall = () => {
+	const leaveCall = async () => {
+		setCallAccepted(false);
 		setCallEnded(true);
 		connectionRef.current.destroy();
+		userVideo.current.srcObject = null;
 	};
 
 	const copyClipboard = () => {
@@ -124,15 +122,15 @@ function App() {
 							<h1 className="heading1">Your Cam</h1>
 							<div className="flex">
 								<CopyToClipboard text={me}>
-									<div>
-										<Button >
+									<div className="id">
+										<Button>
 											<ContentCopyIcon
 												fontSize="small"
 												sx={{ color: blue[300] }}
 												className="alcenter"
 											></ContentCopyIcon>
-											{`ID - ${me}`}
 										</Button>
+										{`ID - ${me}`}
 									</div>
 								</CopyToClipboard>
 								{open && <DoneIcon></DoneIcon>}
@@ -185,17 +183,18 @@ function App() {
 							<div>
 								<div className="call-button">
 									{callAccepted && !callEnded ? (
-										<button
+										<Button
 											variant="contained"
-											color="secondary"
+											color="error"
 											onClick={leaveCall}
 										>
 											End Call
-										</button>
+										</Button>
 									) : (
 										<Button
 											onClick={() => callUser(idToCall)}
 											variant="outlined"
+											color="primary"
 										>
 											Call
 										</Button>
@@ -203,19 +202,35 @@ function App() {
 								</div>
 							</div>
 						</div>
+						<div className="camerup2" direction="row" spacing={2}>
+							<div>
+								{receivingCall && !callAccepted ? (
+									<div className="caller">
+										<h1>{name} is calling...</h1>
+										<Button
+											className="margtop20"
+											variant="contained"
+											color="success"
+											onClick={answerCall}
+										>
+											Answer
+										</Button>
+									</div>
+								) : null}
+							</div>
+						</div>
 					</Grid>
 				</Grid>
 			</div>
 			<div className="myId"></div>
-			<div>
-				{receivingCall && !callAccepted ? (
-					<div className="caller">
-						<h1>{name} is calling...</h1>
-						<button variant="contained" color="primary" onClick={answerCall}>
-							Answer
-						</button>
-					</div>
-				) : null}
+			<div className="footer">
+				<a
+					href="https://github.com/omhardaha"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<GitHubIcon></GitHubIcon>/omhardaha
+				</a>
 			</div>
 		</>
 	);

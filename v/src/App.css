@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 body {
-	background-color: #444;
+	background-color: #1f464d;
 	font-family: "Roboto", sans-serif;
 }
 * {
@@ -8,7 +8,7 @@ body {
 	padding: 0;
 }
 .border {
-	border: 3px solid rgb(71, 71, 71);
+	/* border: 3px solid rgb(71, 71, 71); */
 	width: -webkit-fill-available;
 	padding: 1%;
 }
@@ -17,8 +17,12 @@ h2 {
 	border: 2px solid grey;
 	width: -webkit-fill-available;
 }
-.fsizeLow{
-    font-size: smaller;
+.fsizeLow {
+	font-size: smaller;
+}
+.id {
+	color: #59def6;
+	cursor: pointer;
 }
 .camera1down {
 	display: flex;
@@ -36,12 +40,15 @@ h1 {
 }
 @media only screen and (max-width: 900px) {
 	.border {
-		border: 3px solid rgb(71, 71, 71);
-		width: 100%;
+		/* border: 3px solid rgb(71, 71, 71); */
+		width: 44%;
 		padding: 1%;
 	}
 	.heading1 {
-        display: none;
+		display: none;
+	}
+	.camera1 {
+		text-align: center;
 	}
 }
 
@@ -56,6 +63,9 @@ h1 {
 	justify-content: center;
 	align-items: center;
 }
+.margtop20 {
+	margin-top: 20px;
+}
 .cameras {
 	margin: 27px 2%;
 }
@@ -67,4 +77,15 @@ h1 {
 }
 .text {
 	color: white !important;
+}
+
+.footer {
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: aliceblue;
+}
+.footer a {
+	color: aliceblue;
+	text-decoration: none;
 }

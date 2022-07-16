@@ -3,7 +3,6 @@ const http = require("http");
 const path = require("path");
 const app = express();
 const server = http.createServer(app);
-const socket = require("socket.io");
 const io = require("socket.io")(server, {
 	cors: {
 		origin: "*",
@@ -11,19 +10,13 @@ const io = require("socket.io")(server, {
 	},
 });
 const port = process.env.PORT || 5000;
-console.log(__dirname);
-// app.use(express.static(path.join(__dirname, 'build')));
-// app.get('/', function (req, res) {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//   });
-
-// app.use(express.static(path.join(__dirname, 'v/build')));
-
 app.use(express.static(path.join(__dirname,"v","build")));
 app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname,"v","build", "index.html"));
 });
+
 io.on("connection", (socket) => {
+
 	console.log(socket.id);
 
 	socket.emit("me", socket.id);
