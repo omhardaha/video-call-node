@@ -39,8 +39,7 @@ h1 {
 	color: rgb(186, 186, 186);
 }
 @media only screen and (max-width: 900px) {
-	.border {
-		/* border: 3px solid rgb(71, 71, 71); */
+	.bordersmall {
 		width: 44%;
 		padding: 1%;
 	}

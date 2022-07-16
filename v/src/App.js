@@ -137,7 +137,7 @@ function App() {
 							</div>
 						</div>
 						<div className="camera1">
-							<video className="border" ref={myVideo} autoPlay="true" muted />
+							<video className="border bordersmall" ref={myVideo} autoPlay="true" muted />
 						</div>
 					</Grid>
 					<Grid item xs={12} sm={12} md={6}>
